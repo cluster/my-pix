@@ -1,0 +1,41 @@
+{
+  "name": "my-pix",
+  "version": "0.0.1",
+  "description": "my-pix",
+  "main": "js/app.js",
+  "dependencies": {
+    "browserify": "^6.2.0",
+    "envify": "^3.0.0",
+    "jest-cli": "~0.1.17",
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1",
+    "express"    : "~4.7.2",
+    "express-session": "1.9.3",
+    "connect-flash" : "~0.1.1",
+    "mongoose"   : "~3.6.2",
+    "morgan"     : "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2",
+    "passport": "0.2.1",
+    "passport-local" : "1.0.0"
+  },
+  "scripts": {
+    "start": "watchify -o public/js/bundle.js -v -d public/js/app.js",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
+    "test": "jest"
+  },
+  "browserify": {
+    "transform": [
+      "envify"
+    ]
+  },
+  "jest": {
+    "rootDir": "./js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cluster/my-pix.git"
+  },
+  "author": "Clément Uster",
+  "license": "MIT"
+}
